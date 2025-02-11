@@ -1,28 +1,33 @@
 const express = require('express');
+const session = require('express-session');
+const flash = require('express-flash');
+
 const app = express();
 
-// DB
-const pool = require('./db/pool');
+require('dotenv').config();
 
-const path = require("node:path");
-
-// HTML
+const path = require('path');
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// CSS
-const assetsPath = path.join(__dirname, "public");
+app.use(express.json());
+const assetsPath = path.join(__dirname, "src");
 app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
 
-// ROUTES
-app.get('/', (req, res) => {
+app.use(session({
+    secret:  process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+}));
 
-});
+app.use(flash());
 
-// SERVER
-const port = 3000;
+const mainRouter = require('./routes/mainRouter');
+app.use('/', mainRouter);
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
