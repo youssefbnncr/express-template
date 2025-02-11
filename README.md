@@ -1,4 +1,4 @@
-# My Express App
+# Template
 
 This is a template for an Express.js application.
 
