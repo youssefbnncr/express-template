@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const flash = require('express-flash');
 
 const app = express();
 
@@ -22,12 +21,12 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-app.use(flash());
-
-const mainRouter = require('./routes/mainRouter');
-app.use('/', mainRouter);
+app.get('/',(req,res)=>{
+    res.render('index');
+})
 
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
