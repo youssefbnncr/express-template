@@ -1,33 +1,12 @@
 {
-  "name": "express-template",
-  "version": "1.0.0",
-  "description": "This is a template for an Express.js application.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/youssefbnncr/express-template.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/youssefbnncr/express-template/issues"
-  },
-  "homepage": "https://github.com/youssefbnncr/express-template#readme",
-  "devDependencies": {
-    "@prisma/client": "^6.4.1",
-    "bcryptjs": "^3.0.2",
-    "ejs": "^3.1.10",
-    "eslint": "^9.21.0",
-    "express-session": "^1.18.1",
-    "passport-js": "^1.0.0",
-    "prettier": "^3.5.2",
-    "prisma": "^6.4.1"
-  },
   "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "env": "^0.0.2",
+    "express": "^5.1.0",
+    "express-validation": "^4.1.1",
+    "express-validator": "^7.2.1",
+    "pg": "^8.15.6",
+    "postgres": "^3.4.5"
   }
 }

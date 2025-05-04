@@ -1,0 +1,11 @@
+<form action="/addUser" method="post">
+    <input type="text" name="username" placeholder="username">
+    <% if (error && error.length > 0) { %>
+        <ul>
+            <% error.forEach(e => { %>
+                <li><%= e.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    <input type="submit">
+</form>

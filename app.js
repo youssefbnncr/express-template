@@ -1,32 +1,22 @@
 const express = require('express');
-const session = require('express-session');
+const app = express()
 
-const app = express();
-
-require('dotenv').config();
+const userRouter = require('./routes/usersRouter')
 
 const path = require('path');
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const assetsPath = path.join(__dirname, "src");
 app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(session({
-    secret:  process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-}));
+app.use('/',userRouter)
 
-app.get('/',(req,res)=>{
-    res.render('index');
+app.listen(3000, ()=>{
+    console.log('Application running at http://localhost:3000')
 })
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
